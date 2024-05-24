@@ -1,14 +1,16 @@
 import requests
 
-API_KEY = 'AIzaSyCBhhDaxVzYRfNycGVpNEZRS2_td_JpW50'
+API_KEY = 'AIzaSyCifYFIfVr0QxH4aCqY6_dxgJ5B_6FEb7c'
 
 
-def get_image(latitude, longitude, zoom, idx, size='512x512'):
+def get_image(latitude, longitude, zoom, idx, size='640x640', scale=2):
     url = f'https://maps.googleapis.com/maps/api/staticmap?' \
           f'center={latitude},{longitude}' \
           f'&zoom={zoom}' \
           f'&size={size}' \
+          f'&scale={scale}' \
           f'&maptype=satellite' \
+          f'&format=png' \
           f'&key={API_KEY}'
 
     response = requests.get(url)

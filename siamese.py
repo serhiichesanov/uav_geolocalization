@@ -14,15 +14,16 @@ from torchvision import transforms, models
 from numpy import linalg, transpose
 from torchvision.models import VGG16_Weights
 
-from preprocessing import Resize, CustomTransform, ToTensor, MeanStdRecorder
+from preprocessing import Resize, ToTensor, MeanStdRecorder
 
 
 class SiameseDataset(Dataset):
 
-    def __init__(self, dataset, test=False, load_stats=False):
+    def __init__(self, dataset, test=False, transform=None, load_stats=False):
         self.dataset = dataset
         self.test = test
         self.N_CHANNELS = 3
+        self.transform = transform
 
         if self.test:
             self.query_path = '/Test/query_images/'
@@ -65,7 +66,9 @@ class SiameseDataset(Dataset):
                 self.ref_mean = pickle.load(file)
                 self.ref_std = pickle.load(file)
 
-        self.transform = CustomTransform(self.q_mean, self.q_std, self.ref_mean, self.ref_std)
+        print(self.q_mean, self.q_std)
+
+
 
     def __len__(self):
         return len(os.listdir(self.dataset + self.reference_path))
@@ -73,10 +76,10 @@ class SiameseDataset(Dataset):
     def __getitem__(self, idx):
         q_image = self.all_query_fns[idx]
 
-        if random.randint(0, 10) < 3:
+        if random.randint(0, 10) < 4:
             if self.dataset == 'ALTO':
-                gt_df = pd.read_csv(self.query_path[:-13] + 'gt_matches.csv')
-                ref_image = gt_df[gt_df['query_name'] == q_image]
+                gt_df = pd.read_csv(self.dataset + self.query_path[:-13] + 'gt_matches.csv')
+                ref_image = gt_df.loc[gt_df['query_name'] == q_image, 'ref_name'].values[0][14:]
             else:
                 ref_image = self.all_ref_fns[idx]
             label = 0
@@ -84,10 +87,19 @@ class SiameseDataset(Dataset):
             ref_image = self.all_ref_fns[random.randint(0, len(self.all_ref_fns) - 1)]
             label = 1
 
+
         sample = {'query': cv.imread(self.dataset + self.query_path + q_image),
                   'reference': cv.imread(self.dataset + self.reference_path + ref_image)}
 
-        sample = self.transform(sample)
+
+        if self.transform:
+            sample = self.transform(sample)
+
+        q_t = transforms.Normalize(mean=self.q_mean, std=self.q_std)
+        r_t = transforms.Normalize(mean=self.ref_mean, std=self.ref_std)
+
+        sample['query'] = q_t(sample['query'])
+        sample['reference'] = r_t(sample['reference'])
 
         sample.update({'label': label})
 
@@ -128,7 +140,8 @@ class ContrastiveLoss(Module):
 
 
 if __name__ == '__main__':
-    dataset = SiameseDataset('ALTO', load_stats=True)
+    dataset = SiameseDataset('ALTO', load_stats=True, transform=transforms.Compose([Resize((512, 512)),
+                                                                                     ToTensor()]))
 
     dataloader = DataLoader(dataset, batch_size=4, shuffle=True, num_workers=0)
 

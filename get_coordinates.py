@@ -16,3 +16,11 @@ def get_coordinates(file_path, dataset):
         data = json.load(f)
 
         return data["longitude"], data["latitude"]
+
+    if dataset == 'DenseUAV':
+        with open(file_path, "r") as file:
+            for line in file:
+                # Split the line by spaces
+                parts = line.split()
+                # Extract the E and N coordinates
+                return parts[1][1:], parts[2][1:]

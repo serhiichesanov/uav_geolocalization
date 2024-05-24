@@ -3,11 +3,15 @@ import shutil
 import random
 from get_arial_image import get_image
 from get_coordinates import get_coordinates
+from io import BytesIO
+import numpy as np
+from PIL import Image
+import cv2 as cv
 
-coordinates_path = 'C:\\Users\\lordres\\Downloads\\place'  # '.\\CVPR_subset\\annotations.csv'
+coordinates_path = 'D:\\BaiduNetdiskDownload\\DenseUAV\\Dense_GPS_train.txt'  # '.\\CVPR_subset\\annotations.csv'
 reference_path = '.\\UDWA\\total'  # '.\\CVPR_subset\\reference_images'
 
-dataset = 'UDWA'
+dataset = 'DenseUAV'
 
 if not os.path.exists(reference_path):
     os.mkdir(reference_path)
@@ -44,3 +48,17 @@ elif dataset == 'UDWA':
             destination_file_path = os.path.join(reference_path, jpg_file)
 
             shutil.move(source_file_path, destination_file_path)
+else:
+    latitude, longitude = get_coordinates(coordinates_path, dataset)
+    latitude = '40.714728'
+    longitude = '-73.998672'
+    image = BytesIO(get_image(latitude, longitude, 20, 0))
+
+
+    # Save the image to a file
+    image = Image.open(image)#
+    image.save('D:\\BaiduNetdiskDownload\\DenseUAV\\satellite_image_1.png')
+    # print(image)
+    # if image:
+    #     with open(f'D:\\BaiduNetdiskDownload\\DenseUAV\\satellite_image_1.png', 'wb') as f:
+    #         f.write(image)

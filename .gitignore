@@ -2,6 +2,10 @@ venv
 University-Release
 UDWA
 CVPR_subset
-ALTO
+ALTO/*
+!ALTO/.gitkeep
+Real-Time Matcher/map_sat1
 .idea
 __pycache__
+Models
+wandb
