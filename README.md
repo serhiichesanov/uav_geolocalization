@@ -9,14 +9,17 @@ Training uses **online triplet mining**, where anchor, positive, and negative sa
 
 The result is a viewpoint-invariant representation suitable for vision-based UAV geo-localization.
 # Dataset
-<p align=center><img width="774" height="388" alt="image" src="https://github.com/user-attachments/assets/aa048873-016f-49a0-beb7-d0ba738c312f" /></p>
+<p align=center><img width="827" height="369" alt="image" src="https://github.com/user-attachments/assets/3903999b-0e2f-4d47-84cd-b7e209af4e63" /></p>
+<img width="777" height="388" alt="image" src="https://github.com/user-attachments/assets/fcbab5a1-8000-4e6a-99a5-a88516a9742b" />
 
 
 The experiments are based on the [DenseUAV dataset](https://github.com/Dmmm1997/DenseUAV), a large-scale benchmark specifically designed for vision-based UAV self-positioning in low-altitude urban environments. DenseUAV contains paired UAV-view and satellite-view images collected with dense spatial sampling
 
 The dataset includes 27,297 images covering 14 university campuses, capturing significant viewpoint, scale, and appearance variations between UAV and satellite imagery.
-<p align=center>Dataset info</p>
-<img width="811" height="391" alt="image" src="https://github.com/user-attachments/assets/23611368-cf66-45ab-bc6e-c301e3a99eb3" />
+<p align=center style="font-size: 18px;">Dataset info</p>
+<p align=center><img width="777" height="388" alt="image" src="https://github.com/user-attachments/assets/26c544e1-0ae6-4b21-b353-512430933221" /></p>
+
+
 
 The ratio of training and test data: 75% and 25%, respectively.
 
