@@ -28,16 +28,16 @@ The trained model is applied in real-time geolocation. A database of satellite i
 
 # Inference
 ## Train
-![TRAIN-ezgif com-optimize](https://github.com/user-attachments/assets/5c53af57-e3e0-4188-b872-4c01166742ff)
+<p align=center>![TRAIN-ezgif com-optimize](https://github.com/user-attachments/assets/5c53af57-e3e0-4188-b872-4c01166742ff)</p>
 
 ## Test Case 1 (Better Case)
-![TEST1-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/7fe8d55f-d01f-4e26-97e7-d9c00faecebd)
+<p align=center>![TEST1-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/7fe8d55f-d01f-4e26-97e7-d9c00faecebd)</p>
 
 ## Test Case 2 (Worse Case)
-![TEST0-ezgif com-optimize](https://github.com/user-attachments/assets/e6372a3a-43ba-4429-a44f-5bbbf571f6dc)
+<p align=center>![TEST0-ezgif com-optimize](https://github.com/user-attachments/assets/e6372a3a-43ba-4429-a44f-5bbbf571f6dc)</p>
 
 ## Test on ALTO dataset
-![ALTO-ezgif com-optimize](https://github.com/user-attachments/assets/75497616-914f-4cfb-8e8e-247d7e3c84f0)
+<p align=center>![ALTO-ezgif com-optimize](https://github.com/user-attachments/assets/75497616-914f-4cfb-8e8e-247d7e3c84f0)</p>
 
 
 
