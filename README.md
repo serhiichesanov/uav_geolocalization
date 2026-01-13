@@ -42,6 +42,7 @@ The trained model is applied in real-time geolocation. A database of satellite i
 # Summary
 After all experiments, the metrics R@1, R@5, R@10 are 62.15%, 92.12%, and 97.22%, respectively, and the geolocation error is 21.33 m. It was also found that, compared to CNN-like analogues of the model, the proposed method wins in accuracy by 1.92% with a size 4.87 times smaller, but loses to transformer-like analogues in accuracy by 18.04%, whose size is 14.7 times larger.
 ## Results
-<img width="772" height="415" alt="image" src="https://github.com/user-attachments/assets/984361a7-a9ec-4678-864b-a6d752a612a3" />
+<p align=center><img width="775" height="399" alt="image" src="https://github.com/user-attachments/assets/2aee28ac-04c1-415b-9f60-48597ceeaa54" /></p>
+
 
 
