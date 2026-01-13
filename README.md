@@ -21,3 +21,25 @@ The dataset includes 27,297 images covering 14 university campuses, capturing si
 
 The ratio of training and test data: 75% and 25%, respectively.
 
+# Real-time matching module
+<p align="center"><img width="968" height="789" alt="image" src="https://github.com/user-attachments/assets/e5a4f32d-add5-4a33-b166-559c0f493550" /></p>
+
+The trained model is applied in real-time geolocation. A database of satellite images covering the predicted flight area is provided. They are passed to the network to compute their vector representations. After that, the desired video is selected, which is divided into frames, which are also computed by the model. Then the Euclidean distance between the frame and each satellite image from the database is calculated, sorted in ascending order, and the smallest distance is taken. The index of such a distance is the model's prediction, indicating the current photo from the database. Thus, longitude and latitude information is obtained.
+
+# Inference
+## Train
+![TRAIN-ezgif com-optimize](https://github.com/user-attachments/assets/5c53af57-e3e0-4188-b872-4c01166742ff)
+
+## Test Case 1 (Better Case)
+![TEST1-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/7fe8d55f-d01f-4e26-97e7-d9c00faecebd)
+
+## Test Case 2 (Worse Case)
+![TEST0-ezgif com-optimize](https://github.com/user-attachments/assets/e6372a3a-43ba-4429-a44f-5bbbf571f6dc)
+
+## Test on ALTO dataset
+![ALTO-ezgif com-optimize](https://github.com/user-attachments/assets/75497616-914f-4cfb-8e8e-247d7e3c84f0)
+
+
+
+
+
